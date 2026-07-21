@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import {
   supabase,
+  supabaseConfigured,
   type SpeedOrder,
   type SpeedOrderStatus,
 } from "@/lib/supabase";
@@ -409,6 +410,27 @@ const Admin = () => {
   const dayTotal = orders
     .filter((o) => o.status === "delivered")
     .reduce((sum, o) => sum + Number(o.total), 0);
+
+  if (!supabaseConfigured) {
+    return (
+      <div className="flex min-h-screen items-center justify-center px-4">
+        <div className="animate-scale-in w-full max-w-md rounded-lg border border-border/50 bg-gradient-surface p-8 text-center">
+          <img
+            src="/images/logo.png"
+            alt="Pink South"
+            className="mx-auto mb-4 h-16 w-auto"
+          />
+          <h1 className="font-display text-xl text-foreground">
+            Commandes par email
+          </h1>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            Les commandes arrivent directement sur la boîte email de l'équipe.
+            Ce tableau de bord temps réel s'activera avec le backend Supabase.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   if (!sessionLoaded) return <div className="min-h-screen" />;
 

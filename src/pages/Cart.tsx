@@ -6,8 +6,7 @@ import { SiteFooter } from "@/components/ui/site-footer";
 import { useCart } from "@/context/cart-context";
 import { useToast } from "@/context/toast-context";
 import { getClub } from "@/data/clubs";
-import { submitOrder } from "@/lib/orders";
-import { supabaseConfigured } from "@/lib/supabase";
+import { orderingEnabled, submitOrder } from "@/lib/orders";
 
 const inputClass =
   "w-full appearance-none rounded-md border border-border/60 bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none fluid-transition focus:border-accent/60 focus:ring-2 focus:ring-accent/20";
@@ -19,7 +18,7 @@ const Cart = () => {
   const [phone, setPhone] = useState("");
   const [comments, setComments] = useState("");
   const [sending, setSending] = useState(false);
-  const [confirmedNumber, setConfirmedNumber] = useState<number | null>(null);
+  const [confirmedRef, setConfirmedRef] = useState<string | null>(null);
 
   const club = items.length ? getClub(items[0].clubId) : undefined;
 
@@ -38,14 +37,14 @@ const Cart = () => {
       return;
     }
     if (!club) return;
-    if (!supabaseConfigured) {
+    if (!orderingEnabled) {
       toast("L'envoi de commandes sera bientôt disponible.");
       return;
     }
 
     setSending(true);
     try {
-      const { orderNumber } = await submitOrder({
+      const { ref } = await submitOrder({
         clubId: club.id,
         clubName: club.name,
         customerName: firstName,
@@ -53,7 +52,7 @@ const Cart = () => {
         comments,
         items,
       });
-      setConfirmedNumber(orderNumber);
+      setConfirmedRef(ref);
       clear();
     } catch {
       toast("Impossible d'envoyer la commande. Réessayez dans un instant.");
@@ -62,7 +61,7 @@ const Cart = () => {
     }
   };
 
-  if (confirmedNumber !== null) {
+  if (confirmedRef !== null) {
     return (
       <div className="min-h-screen">
         <div className="container mx-auto flex min-h-[80vh] max-w-lg flex-col items-center justify-center px-4 text-center">
@@ -83,7 +82,7 @@ const Cart = () => {
               </svg>
             </div>
             <h1 className="font-display text-2xl text-foreground md:text-3xl">
-              Commande n°{confirmedNumber} envoyée !
+              Commande {confirmedRef} envoyée !
             </h1>
             <p className="mt-4 text-muted-foreground">
               Notre équipe la prépare et vous livre directement à l'entrée.
