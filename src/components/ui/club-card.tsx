@@ -41,7 +41,7 @@ export const ClubCard = ({
             event.stopPropagation();
             onSelect(id);
           }}
-          className="h-10 w-full rounded-md bg-gradient-neon px-4 py-2 text-sm font-semibold text-primary-foreground fluid-transition hover:glow-neon"
+          className="h-11 w-full rounded-md bg-gradient-neon px-4 py-2 text-sm font-bold uppercase tracking-wide text-primary-foreground fluid-transition hover:glow-neon"
         >
           Choisir cette boîte
         </button>

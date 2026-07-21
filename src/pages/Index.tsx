@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ClubCard } from "@/components/ui/club-card";
+import { PalmDecor } from "@/components/ui/palm-decor";
 import { HelpButton } from "@/components/ui/help-button";
 import { CartButton } from "@/components/ui/cart-button";
 import { SiteHeader } from "@/components/ui/site-header";
@@ -14,13 +15,16 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
       <SiteHeader />
+      <PalmDecor />
 
-      <div id="clubs" className="container mx-auto px-4 pb-16 pt-6 md:px-6 md:pt-8">
+      <div id="clubs" className="container mx-auto px-4 pb-16 pt-8 md:px-6 md:pt-12">
         <div className="mb-12 text-center md:mb-16">
-          <h1 className="mb-6 animate-scale-in text-2xl font-bold text-foreground md:text-3xl lg:text-4xl">
-            Choisissez votre boîte de nuit
+          <h1 className="animate-scale-in">
+            <span className="paper-label font-display px-6 py-3 text-2xl md:px-8 md:py-4 md:text-4xl">
+              Choisissez votre boîte de nuit
+            </span>
           </h1>
         </div>
 
