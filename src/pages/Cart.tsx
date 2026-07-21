@@ -82,7 +82,7 @@ const Cart = () => {
                 <path d="M20 6 9 17l-5-5" />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold text-foreground md:text-3xl">
+            <h1 className="font-display text-2xl text-foreground md:text-3xl">
               Commande n°{confirmedNumber} envoyée !
             </h1>
             <p className="mt-4 text-muted-foreground">
@@ -109,7 +109,7 @@ const Cart = () => {
       <div className="container mx-auto max-w-6xl px-4 pb-16 pt-6 md:px-6 md:pt-10">
         <div className="mb-8 flex items-center gap-5">
           <BackButton />
-          <h1 className="text-3xl font-bold text-foreground md:text-4xl">
+          <h1 className="font-display text-3xl text-foreground md:text-4xl">
             Mon Panier
           </h1>
         </div>

@@ -76,7 +76,7 @@ const Login = ({ onError }: { onError: (msg: string) => void }) => {
           alt="Pink South"
           className="mx-auto mb-2 h-14 w-auto"
         />
-        <h1 className="mb-6 text-center text-xl font-bold text-foreground">
+        <h1 className="mb-6 text-center font-display text-xl text-foreground">
           Espace équipe
         </h1>
         <label className="mb-4 block">
@@ -434,7 +434,7 @@ const Admin = () => {
             alt="Pink South"
             className="h-9 w-auto"
           />
-          <h1 className="text-lg font-bold text-foreground">Commandes</h1>
+          <h1 className="font-display text-lg text-foreground">Commandes</h1>
           {newCount > 0 && (
             <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-accent px-1.5 text-xs font-bold text-accent-foreground">
               {newCount}
