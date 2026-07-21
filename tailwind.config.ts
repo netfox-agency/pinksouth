@@ -30,12 +30,20 @@ export default {
         },
         secondary: "hsl(var(--secondary))",
         destructive: "hsl(var(--destructive))",
+        paper: {
+          DEFAULT: "hsl(var(--paper))",
+          deep: "hsl(var(--paper-deep))",
+          ink: "hsl(var(--paper-ink))",
+        },
+      },
+      fontFamily: {
+        display: ["Anton", "Inter", "sans-serif"],
       },
       backgroundImage: {
         "gradient-neon":
-          "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))",
+          "linear-gradient(135deg, hsl(330 88% 50%), hsl(338 95% 62%))",
         "gradient-accent":
-          "linear-gradient(to right, hsl(var(--accent)), hsl(var(--primary)))",
+          "linear-gradient(to right, hsl(338 95% 60%), hsl(330 88% 50%))",
         "gradient-surface":
           "linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)))",
       },

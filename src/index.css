@@ -4,26 +4,33 @@
 
 @layer base {
   :root {
-    --background: 225 25% 8%;
-    --foreground: 0 0% 95%;
+    /* DA Pink South — flyer officiel : magenta profond, rose vif, papier kraft crème */
+    --background: 334 55% 10%;
+    --foreground: 32 45% 96%;
 
-    --card: 225 20% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 333 45% 14%;
+    --card-foreground: 32 45% 96%;
 
-    --primary: 270 100% 65%;
-    --primary-foreground: 0 0% 10%;
+    --primary: 330 88% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --accent: 320 100% 70%;
-    --accent-foreground: 0 0% 10%;
+    --accent: 334 95% 66%;
+    --accent-foreground: 335 70% 14%;
 
-    --secondary: 190 100% 60%;
+    /* Bleu du logo (vague/surf) — accents secondaires uniquement */
+    --secondary: 207 62% 55%;
 
-    --muted: 225 15% 18%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 332 35% 19%;
+    --muted-foreground: 336 18% 72%;
 
-    --border: 225 15% 25%;
+    --border: 331 30% 26%;
 
     --destructive: 0 84% 60%;
+
+    /* Étiquettes papier kraft du flyer */
+    --paper: 38 52% 90%;
+    --paper-deep: 36 45% 83%;
+    --paper-ink: 331 78% 42%;
 
     --radius: 0.75rem;
   }
@@ -40,17 +47,44 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background-image:
+      radial-gradient(1200px 600px at 80% -10%, hsl(332 70% 22% / 0.55), transparent 60%),
+      radial-gradient(900px 500px at -10% 40%, hsl(336 65% 18% / 0.5), transparent 55%);
+    background-attachment: fixed;
   }
 }
 
 @layer utilities {
+  .font-display {
+    font-family: "Anton", "Inter", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  /* Étiquette papier déchiré du flyer : crème, encre magenta, légère rotation */
+  .paper-label {
+    display: inline-block;
+    background: linear-gradient(180deg, hsl(var(--paper)), hsl(var(--paper-deep)));
+    color: hsl(var(--paper-ink));
+    clip-path: polygon(
+      1.5% 9%, 4% 0%, 38% 3%, 62% 0%, 96% 2%, 100% 14%,
+      98.5% 52%, 100% 88%, 95% 100%, 60% 97%, 35% 100%, 4% 98%, 0% 86%, 1% 48%
+    );
+    transform: rotate(-1.5deg);
+    box-shadow: 0 10px 30px -12px hsl(335 80% 5% / 0.9);
+  }
+
+  .paper-label--flip {
+    transform: rotate(1.6deg);
+  }
+
   .fluid-transition {
     transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease,
       border-color 0.3s ease, background-color 0.3s ease;
   }
 
   .glow-pink {
-    box-shadow: 0 0 20px hsl(var(--accent) / 0.5);
+    box-shadow: 0 0 22px hsl(var(--primary) / 0.55);
   }
 
   .glow-cyan {
@@ -58,7 +92,7 @@
   }
 
   .glow-neon {
-    box-shadow: 0 0 24px hsl(var(--primary) / 0.45);
+    box-shadow: 0 0 24px hsl(var(--primary) / 0.5);
   }
 
   .animate-scale-in {
