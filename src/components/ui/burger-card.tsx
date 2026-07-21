@@ -31,7 +31,7 @@ export const BurgerCard = ({ burger, clubId }: BurgerCardProps) => {
           className="h-full w-full object-cover"
           loading="lazy"
         />
-        <span className="absolute right-3 top-3 rounded-full bg-accent px-3 py-1 text-sm font-bold text-accent-foreground">
+        <span className="paper-label paper-label--flip absolute right-2.5 top-2.5 px-3 py-1 font-display text-base">
           {burger.price}€
         </span>
       </div>
@@ -69,7 +69,7 @@ export const BurgerCard = ({ burger, clubId }: BurgerCardProps) => {
         <button
           type="button"
           onClick={handleAdd}
-          className="h-10 w-full rounded-md bg-gradient-accent px-4 text-sm font-semibold text-primary-foreground fluid-transition hover:glow-pink"
+          className="h-11 w-full rounded-md bg-gradient-accent px-4 text-sm font-bold uppercase tracking-wide text-primary-foreground fluid-transition hover:glow-pink"
         >
           Ajouter ce burger
         </button>
