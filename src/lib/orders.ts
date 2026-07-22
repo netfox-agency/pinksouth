@@ -46,6 +46,53 @@ const submitViaSupabase = async (input: NewOrderInput): Promise<string> => {
   return `n°${data as number}`;
 };
 
+const euro = (n: number) => `${n.toFixed(2).replace(".", ",")} €`;
+
+/** Ticket texte structuré : lisible d'un coup d'œil sur téléphone, la nuit. */
+const buildTicket = (input: NewOrderInput, ref: string, total: number) => {
+  const now = new Date().toLocaleString("fr-FR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Europe/Paris",
+  });
+
+  const lines = input.items.map((item) => {
+    const label = `${item.quantity} × ${item.name}`;
+    return `${label} ${".".repeat(Math.max(3, 30 - label.length))} ${euro(
+      item.price * item.quantity
+    )}`;
+  });
+
+  return [
+    "══════════════════════════════",
+    "PINK SOUTH · BON DE COMMANDE",
+    "══════════════════════════════",
+    "",
+    `Référence : ${ref}`,
+    `Passée le : ${now}`,
+    `Livraison : ${input.clubName} (devant l'entrée)`,
+    "",
+    "── CLIENT ────────────────────",
+    `${input.customerName.trim()}`,
+    `${input.customerPhone.trim()}`,
+    "",
+    "── DÉTAIL ────────────────────",
+    ...lines,
+    "",
+    `TOTAL À ENCAISSER : ${euro(total)}`,
+    "Paiement à la livraison",
+    ...(input.comments.trim()
+      ? ["", "── COMMENTAIRES ──────────────", `« ${input.comments.trim()} »`]
+      : []),
+    "",
+    "══════════════════════════════",
+    "pinksouthburger.fr",
+  ].join("\n");
+};
+
 const submitViaEmail = async (input: NewOrderInput): Promise<string> => {
   const ref = makeRef();
   const total = input.items.reduce(
@@ -56,29 +103,13 @@ const submitViaEmail = async (input: NewOrderInput): Promise<string> => {
   // FormData = requête CORS "simple" (pas de preflight, bloqué chez Web3Forms).
   const form = new FormData();
   form.append("access_key", WEB3FORMS_KEY!);
-  form.append("from_name", "Pink South · Commandes");
+  form.append("from_name", "Pink South");
   form.append(
     "subject",
-    `🍔 Commande ${ref} · ${input.clubName} · ${total.toFixed(0)}€`
+    `🧾 ${ref} · ${input.clubName} · ${total.toFixed(0)}€ · ${input.customerName.trim()}`
   );
   form.append("botcheck", "");
-  form.append("Référence", ref);
-  form.append("Club de livraison", input.clubName);
-  form.append("Prénom", input.customerName.trim());
-  form.append("Téléphone", input.customerPhone.trim());
-  form.append(
-    "Commande",
-    input.items
-      .map(
-        (item) =>
-          `${item.quantity}× ${item.name} · ${(
-            item.price * item.quantity
-          ).toFixed(0)}€`
-      )
-      .join("\n")
-  );
-  form.append("Total (paiement à la livraison)", `${total.toFixed(2)}€`);
-  form.append("Commentaires", input.comments.trim() || "-");
+  form.append("Bon de commande", buildTicket(input, ref, total));
 
   const response = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
