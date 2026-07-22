@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /cart
+Disallow: /admin
+
+Sitemap: https://pinksouthburger.fr/sitemap.xml
