@@ -2,7 +2,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { BackButton } from "@/components/ui/back-button";
 import { BurgerCard } from "@/components/ui/burger-card";
 import { HelpButton } from "@/components/ui/help-button";
-import { CartButton } from "@/components/ui/cart-button";
+import { CartBar } from "@/components/ui/cart-bar";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { burgers, getClub } from "@/data/clubs";
 
@@ -34,7 +34,7 @@ const ClubMenu = () => {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 pb-16 pt-10 md:px-6 md:pt-14">
+      <div className="container mx-auto px-4 pb-32 pt-10 md:px-6 md:pt-14">
         <div className="mb-10 text-center md:mb-14">
           <h2 className="animate-scale-in">
             <span className="paper-label paper-label--flip font-display px-6 py-3 text-2xl md:px-8 md:py-3.5 md:text-3xl">
@@ -61,7 +61,7 @@ const ClubMenu = () => {
       </div>
 
       <HelpButton />
-      <CartButton />
+      <CartBar />
 
       <SiteFooter />
     </div>

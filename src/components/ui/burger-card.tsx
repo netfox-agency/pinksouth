@@ -15,7 +15,7 @@ export const BurgerCard = ({ burger, clubId }: BurgerCardProps) => {
 
   const handleAdd = () => {
     addItem(burger, quantity, clubId);
-    toast(`${quantity}x ${burger.name} ajouté au panier !`);
+    toast(`${quantity}× ${burger.name} ajouté ✔`);
     setQuantity(1);
   };
 

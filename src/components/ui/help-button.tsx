@@ -1,9 +1,17 @@
+import { useCartBarVisible } from "@/components/ui/cart-bar";
+
 export const HelpButton = () => {
+  const lifted = useCartBarVisible();
+
   return (
     <a
       href="tel:+33767960569"
       aria-label="Besoin d'aide ? Appelez-nous"
-      className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-[calc(1.5rem+env(safe-area-inset-right))] z-50 flex h-14 w-14 items-center justify-center rounded-full border border-secondary/50 bg-card/80 text-secondary backdrop-blur-sm transition-all duration-300 hover:bg-muted hover:glow-cyan"
+      className={`fixed right-[calc(1.5rem+env(safe-area-inset-right))] z-50 flex h-14 w-14 items-center justify-center rounded-full border border-secondary/50 bg-card/80 text-secondary backdrop-blur-sm transition-all duration-300 hover:bg-muted hover:glow-cyan ${
+        lifted
+          ? "bottom-[calc(6rem+env(safe-area-inset-bottom))]"
+          : "bottom-[calc(1.5rem+env(safe-area-inset-bottom))]"
+      }`}
     >
       <svg
         width="22"

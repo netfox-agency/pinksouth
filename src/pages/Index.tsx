@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ClubCard } from "@/components/ui/club-card";
 import { PalmDecor } from "@/components/ui/palm-decor";
 import { HelpButton } from "@/components/ui/help-button";
-import { CartButton } from "@/components/ui/cart-button";
+import { CartBar } from "@/components/ui/cart-bar";
 import { SiteHeader } from "@/components/ui/site-header";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { clubs } from "@/data/clubs";
@@ -19,7 +19,7 @@ const Index = () => {
       <SiteHeader />
       <PalmDecor />
 
-      <div id="clubs" className="container mx-auto px-4 pb-16 pt-8 md:px-6 md:pt-12">
+      <div id="clubs" className="container mx-auto px-4 pb-32 pt-8 md:px-6 md:pt-12">
         <div className="mb-12 text-center md:mb-16">
           <h1 className="animate-scale-in">
             <span className="paper-label font-display px-6 py-3 text-2xl md:px-8 md:py-4 md:text-4xl">
@@ -50,7 +50,7 @@ const Index = () => {
       </div>
 
       <HelpButton />
-      <CartButton />
+      <CartBar />
 
       <SiteFooter />
     </div>
