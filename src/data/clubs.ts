@@ -64,7 +64,7 @@ export const burgers: Burger[] = [
     name: "Pink mc",
     description: "2 steaks 45g, 2 cheddar, oignons, cornichons, sauce biggy",
     price: 9,
-    image: "/images/burger-big-mac.webp",
+    image: "/images/burger-pink-mc.webp",
   },
   {
     id: "double-cheese",
