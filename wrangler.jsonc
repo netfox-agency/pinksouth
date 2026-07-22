@@ -1,6 +1,7 @@
 {
   // Pink South — site statique (SPA) servi par Cloudflare Workers Assets.
   "name": "pinksouth",
+  "main": "worker.js",
   "compatibility_date": "2026-07-01",
   // Workers Builds n'a pas de build command configurée : wrangler construit lui-même.
   "build": {
@@ -8,6 +9,10 @@
   },
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS",
+    // Sans ça, les fichiers existants sont servis sans passer par worker.js
+    // et le no-store sur le HTML ne s'applique jamais.
+    "run_worker_first": true
   }
 }
