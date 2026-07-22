@@ -1,0 +1,9 @@
+{
+  // Pink South — site statique (SPA) servi par Cloudflare Workers Assets.
+  "name": "pinksouth",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
