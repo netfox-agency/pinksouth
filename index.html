@@ -2,7 +2,10 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>Pink South - Burgers gourmets en boîte de nuit</title>
     <meta
       name="description"
@@ -23,6 +26,15 @@
     <meta property="og:image" content="https://pinksouthburger.fr/images/club-le-duplex.webp" />
     <meta property="og:locale" content="fr_FR" />
     <meta name="theme-color" content="#220a18" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Pink South" />
     <link rel="canonical" href="https://pinksouthburger.fr/" />
     <script type="application/ld+json">
       {
@@ -39,6 +51,7 @@
         "currenciesAccepted": "EUR",
         "paymentAccepted": "Cash",
         "areaServed": [
+          { "@type": "Place", "name": "MESS" },
           { "@type": "Place", "name": "Le Duplex, Pays Basque" },
           { "@type": "Place", "name": "Le Carré Coast, Biarritz" },
           { "@type": "Place", "name": "L'Opium, Pays Basque" }

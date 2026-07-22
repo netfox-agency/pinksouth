@@ -12,7 +12,7 @@ export const CartButton = () => {
       type="button"
       onClick={() => navigate("/cart")}
       aria-label={`Voir le panier (${count} article${count > 1 ? "s" : ""})`}
-      className="fixed bottom-6 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground transition-all duration-300 hover:glow-pink"
+      className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] left-[calc(1.5rem+env(safe-area-inset-left))] z-50 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground transition-all duration-300 hover:glow-pink"
     >
       <div className="relative">
         <svg

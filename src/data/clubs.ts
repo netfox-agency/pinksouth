@@ -15,6 +15,13 @@ export interface Burger {
 
 export const clubs: Club[] = [
   {
+    id: "mess",
+    name: "MESS",
+    description:
+      "Scène immersive et murs de LED : l'expérience club nouvelle génération",
+    image: "/images/club-mess.webp",
+  },
+  {
     id: "le-duplex",
     name: "Le Duplex",
     description:

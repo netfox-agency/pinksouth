@@ -6,7 +6,7 @@
 create table public.speed_orders (
   id uuid primary key default gen_random_uuid(),
   order_number bigint generated always as identity unique,
-  club_id text not null check (club_id in ('le-duplex', 'carre-coast-biarritz', 'l-opium')),
+  club_id text not null check (club_id in ('mess', 'le-duplex', 'carre-coast-biarritz', 'l-opium')),
   club_name text not null check (char_length(club_name) between 1 and 60),
   customer_name text not null check (char_length(customer_name) between 1 and 80),
   customer_phone text not null check (customer_phone ~ '^[0-9+ .()-]{6,20}$'),
