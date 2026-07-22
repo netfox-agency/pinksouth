@@ -1,7 +1,11 @@
 import { supabase, supabaseConfigured } from "@/lib/supabase";
 import type { CartItem } from "@/context/cart-context";
 
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
+// Clé publique par conception (exposée dans le bundle de toute façon) :
+// fallback en dur pour que le build CI, qui n'a pas le .env, l'embarque aussi.
+const WEB3FORMS_KEY =
+  (import.meta.env.VITE_WEB3FORMS_KEY as string | undefined) ||
+  "3255ded0-dccf-4d15-99b9-70f404c497ad";
 
 /** Au moins un canal de réception est branché (email Web3Forms ou Supabase). */
 export const orderingEnabled = supabaseConfigured || Boolean(WEB3FORMS_KEY);
