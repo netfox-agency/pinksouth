@@ -273,12 +273,15 @@ const Cart = () => {
                 />
               </label>
 
-              <div className="mb-5 flex items-center justify-between">
+              <div className="mb-1 flex items-center justify-between">
                 <span className="text-lg font-bold">Total</span>
                 <span className="text-lg font-bold text-accent">
                   {total.toFixed(2)}€
                 </span>
               </div>
+              <p className="mb-5 text-right text-xs text-muted-foreground">
+                dont TVA 5,5 % : {(total - total / 1.055).toFixed(2)}€
+              </p>
 
               <button
                 type="button"

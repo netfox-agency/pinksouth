@@ -83,6 +83,7 @@ const buildTicket = (input: NewOrderInput, ref: string, total: number) => {
     ...lines,
     "",
     `TOTAL À ENCAISSER : ${euro(total)}`,
+    `dont TVA 5,5 % : ${euro(total - total / 1.055)}`,
     "Paiement à la livraison",
     ...(input.comments.trim()
       ? ["", "── COMMENTAIRES ──────────────", `« ${input.comments.trim()} »`]
